@@ -1,10 +1,9 @@
 import asyncio
-import random
 
 from barcode_reader import BarcodeReader
 
 
-async def run(reader: BarcodeReader) -> None:
+async def main_run(reader: BarcodeReader) -> None:
     while True:
         code = reader.code
         if code is not None and len(code) > 0:
@@ -19,7 +18,7 @@ async def main() -> None:
         port="/dev/ttyACM0",
         baudrate=19200,
     )
-    await asyncio.gather(run(reader), reader.run())
+    await asyncio.gather(main_run(reader), reader.run())
 
 
 if __name__ == "__main__":

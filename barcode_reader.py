@@ -1,3 +1,5 @@
+"""Чтение кодов при помощи сканера."""
+
 import serial
 import asyncio
 
@@ -28,6 +30,7 @@ class BarcodeReader:
         return self._ready
 
     async def run(self: "BarcodeReader") -> None:
+        """Циклическая проверка, есть ли новые коды."""
         while True:
             try:
                 with serial.Serial(
